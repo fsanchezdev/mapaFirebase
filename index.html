@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="../dist/leaflet.awesome-markers.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+
+
+  <title>Buscador Centros</title>
+</head>
+
+<body>
+  <div id="contenedor">
+    <div class="pos-f-t fixed-top" id="barraSuperior">
+
+      <nav class="navbar navbar-dark bg-dark">
+        <button id="botonMenu" class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon " data-toggle="tooltip" data-placement="bottom" title="Abrir menú"></span>
+        </button>
+        <div id="contenedorSesion">
+          <!--<a href="signIn.html"><button class="btn btn btn-outline-secondary" id="sign-in" name="signin">Sign In</button></a>
+        <a href="signUp.html"><button class="btn btn btn-outline-info" id="quickstart-sign-up" name="signup">Sign Up</button></a>-->
+
+          <!--
+          SABADO TARDE
+          -->
+          <img id="img-login" src="img/login.png" alt="foto perfil" height="32" width="32">
+          <!---->
+          <div id="usuarioRegistrado"></div>
+
+          <!--
+          SABADO TARDE
+          AÑADIDO TODOS LOS TOOLTIPS
+          -->
+          <button class="btn btn-outline-secondary" id="log-out" name="logout" data-toggle="tooltip"
+            data-placement="bottom" title="Cerrar sesión">Log Out</button>
+
+
+
+          <!---->
+          <button class="btn btn btn-outline-secondary" id="sign-in" name="signin" data-toggle="tooltip"
+            data-placement="bottom" title="Iniciar sesión">Sign In</button>
+          <button class="btn btn btn-outline-info" id="quickstart-sign-up" name="signup" data-toggle="tooltip"
+            data-placement="bottom" title="Regístrate">Sign Up</button>
+
+
+
+
+
+
+        </div>
+      </nav>
+
+    </div>
+    <div id="filtros">
+      <!--AÑADIDO SABADO-->
+      <div id="titOpciones">
+        <h1 id="titOpcionesTEXT" class="display-4">Elige una <br>opción</h1>
+        <img id="img-Menu" src="img/search.png" alt="foto búsqueda" height="100" width="100">
+
+      </div>
+      <!--MODIFICADO-->
+      <hr>
+      <div id="botonesOcultar">
+        <p id="botonFiltro1">Busqueda 1</p>
+        <p id="botonFiltro2">Busqueda 2</p>
+        <p id="botonFiltro3">Busqueda 3</p>
+      </div>
+      <hr>
+
+      <div id="uno">
+        <div id='seleccionMunicipio'></div>
+        <div id='seleccionCentro'></div>
+      </div>
+      <div id="dos">
+        <div class="dropdown" id="botonDesplegable">
+          <button class="btn btn-outline-light dropdown-toggle dropdown-toggle-split" type="button"
+            id="dropdown_valores" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Elige un centro
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown_valores">
+            <form class="px-4 py-2">
+              <input type="search" class="form-control" id="buscarCentro" placeholder="Nombre del centro..."
+                autofocus="autofocus">
+            </form>
+            <div id="menuItems">
+
+            </div>
+            <div id="vacio" class="dropdown-header">No hay coincidencias</div>
+          </div>
+        </div>
+      </div>
+      <div id="tres">
+        <div class="btn btn-outline-light text-center mt-1">Haz click en el mapa para ver los centros cercanos</div>
+      </div>
+
+
+
+
+    </div>
+    <div id="mymap" class=""></div>
+    <div class="card-footer text-muted text-right mb-3 fixed-bottom">
+      Francisco Sánchez - Yéssica Ramos
+    </div>
+  </div>
+  </div>
+
+  <!--MODAL REGISTRO-->
+  <div id="modalRegistro" class="modal">
+    <div class="modal-content">
+      <span class="close" id="spanRegistro">&times;</span>
+      <div class="">
+        <form onsubmit="return false;">
+          <div class="firebaseui-card-header">
+            <h1 class="firebaseui-title">Regístrate</h1>
+
+          </div>
+          <div class="firebaseui-card-content">
+            <div
+              class="firebaseui-textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty is-upgraded"
+              data-upgraded=",MaterialTextfield"><label class="mdl-textfield__label firebaseui-label"
+                for="email"></label><input type="email" id="email" name="email" autocomplete="username"
+                placeholder="Email" class="mdl-textfield__input firebaseui-input firebaseui-id-email"></div>
+            <div class="firebaseui-error-wrapper">
+              <p class="firebaseui-error firebaseui-text-input-error firebaseui-hidden firebaseui-id-email-error">
+              </p>
+            </div>
+            <div class="firebaseui-textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded"
+              data-upgraded=",MaterialTextfield"><label class="mdl-textfield__label firebaseui-label"
+                for="password"></label><input type="password" id="password" placeholder="password" name="password"
+                autocomplete="current-password" class="mdl-textfield__input firebaseui-input firebaseui-id-password">
+            </div>
+            <div class="firebaseui-error-wrapper">
+              <p class="firebaseui-error firebaseui-text-input-error firebaseui-hidden firebaseui-id-password-error">
+              </p>
+            </div>
+          </div>
+          <div class="firebaseui-card-actions">
+            <!--<button class="firebaseui-id-secondary-link firebaseui-button mdl-button mdl-js-button mdl-button--primary" 
+                data-upgraded=",MaterialButton" id="back">Back</button>-->
+            <div class="firebaseui-form-actions">
+              <button type="submit"
+                class="firebaseui-id-submit firebaseui-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                data-upgraded=",MaterialButton" id="sign-up">Sign Up</button></div>
+          </div>
+          <div class="firebaseui-card-footer"></div>
+        </form>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!--MODAL INICIO SESIÓN-->
+  <div id="modalSesion" class="modal">
+    <div class="modal-content">
+      <span class="close" id="spanSesion">&times;</span>
+      <div class="firebaseui-card-header">
+        <h1 class="firebaseui-title">Iniciar sesión</h1>
+        <hr>
+      </div>
+
+      <div id="firebaseui-auth-container"></div>
+    </div>
+  </div>
+
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDJP4AozNuEVZjbGypboyTU7i69DnPpz0s",
+      authDomain: "pruebaloginemail.firebaseapp.com",
+      databaseURL: "https://pruebaloginemail.firebaseio.com",
+      projectId: "pruebaloginemail",
+      storageBucket: "pruebaloginemail.appspot.com",
+      messagingSenderId: "435272081424",
+      appId: "1:435272081424:web:e81f613654e697a1f96a95"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  
+  <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+  <!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>-->
+
+  <script>
+
+
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDJP4AozNuEVZjbGypboyTU7i69DnPpz0s",
+      authDomain: "pruebaloginemail.firebaseapp.com",
+      databaseURL: "https://pruebaloginemail.firebaseio.com",
+      projectId: "pruebaloginemail",
+      storageBucket: "pruebaloginemail.appspot.com",
+      messagingSenderId: "435272081424",
+      appId: "1:435272081424:web:e81f613654e697a1f96a95"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+
+  </script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+ 
+  
+  
+  <script type="module" src="js/index.js"></script>
+  <script type="text/javascript" src="js/signUp.js"></script>
+  <script type="text/javascript" src="js/signIn.js"></script>
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+    $('.dropdown-toggle').dropdown();
+  </script>
+</body>
+
+</html>

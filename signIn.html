@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+     <h1>Iniciar sesión</h1>
+     <div id="firebaseui-auth-container"></div>
+    
+
+
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+ <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+ <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+ <!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>-->
+
+ <script>
+
+
+
+   // Your web app's Firebase configuration
+   var firebaseConfig = {
+    apiKey: "AIzaSyDJP4AozNuEVZjbGypboyTU7i69DnPpz0s",
+    authDomain: "pruebaloginemail.firebaseapp.com",
+    databaseURL: "https://pruebaloginemail.firebaseio.com",
+    projectId: "pruebaloginemail",
+    storageBucket: "pruebaloginemail.appspot.com",
+    messagingSenderId: "435272081424",
+    appId: "1:435272081424:web:e81f613654e697a1f96a95"
+   };
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+
+
+
+ </script>
+
+
+ <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+
+ <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

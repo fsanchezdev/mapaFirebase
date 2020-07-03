@@ -1,0 +1,194 @@
+.dropdown {
+    margin: 20px;
+    
+  }
+  
+  .dropdown-menu {
+    max-height: 30rem;
+    overflow-y: auto;
+  }
+#mymap {
+    position: absolute;
+    
+    height: 99.5%;
+    z-index: 1;
+    margin-top: 55px;
+    width: 100%;
+    top: -50px;
+}
+#barraSuperior{
+    z-index: 3;
+}
+/*MODIFICADO SABADO TARDE*/
+#filtros{
+    position: absolute;
+    top: 50px;
+    padding: 25px 15px 5px 15px;
+    z-index: 2;
+    width: 450px;
+    height: 600px;
+    background-color: rgba(40, 82, 85, 0.6);
+    border-radius: 5px;
+    
+}
+#contenedor{
+    display: flex;
+}
+#botonDesplegable{
+    margin-left: 9px;
+}
+
+#seleccion,#seleccion2{
+    margin-top: 0px;
+    margin-left: 8px;
+    width: 180px;
+    background-color: rgb(236, 236, 236);
+}
+
+#seleccion2, #uno, #dos, #tres{
+    display: none;
+    
+}
+/*Modificado sabado*/
+#botonesOcultar{
+    width: 400px;
+    
+    margin: 25px 0px 28px 0px;
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    
+}
+/*MODIFICADO SABADO*/
+#botonFiltro1, #botonFiltro2, #botonFiltro3{
+    color: white;
+    width: 250px;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 10px;
+    padding: 5px 10px 5px 10px;
+}
+#botonFiltro1:hover, #botonFiltro2:hover, #botonFiltro3:hover{
+    border: 1px white solid;
+
+    cursor: pointer;
+}
+#uno{
+    margin-left: 5px;
+}
+#filtros{
+    display: none;
+}
+.leaflet-control{
+    display: none;
+}
+/*Boton barra superior registro */
+/*#quickstart-sign-up{
+
+}*/
+/*ESTILO MODAL REGISTRO*/
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+/* The Close Button */
+.close {
+
+  color: #aaaaaa;
+  text-align: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#contenedorSesion{
+    display: flex;
+}
+#usuarioRegistrado{
+    color: rgb(9, 148, 167);
+    margin-top: 5px;
+    margin-right: 15px;
+}
+#sign-in,#quickstart-sign-up{
+    margin-right: 15px;
+}
+
+/*AÑADIDO SABADO TARDE*/
+
+.btn-outline-secondary.dropdown-toggle:hover{
+    background-color: rgb(236, 236, 236);
+    color: rgb(75, 162, 189);
+    border: 1px solid cadetblue;
+    box-shadow: 0 0 10px cadetblue;
+    
+}
+#dropdown_valores{
+    position: relative;
+    position: bottom;
+    margin-left: 20px;
+}
+#log-out{
+    display: none;
+    margin-right: 15px;
+}
+#img-login{
+    display: none;
+    margin-right: 15px;
+    margin-top: 3px;
+}
+#titOpcionesTEXT{
+    color: rgb(255, 255, 255);
+    font-size: 4em;
+    margin-left: 30px;
+    width: 250px;
+}
+#botonMenu:hover, #log-out:hover{
+    border-color: teal;
+}
+#log-out:hover{
+    border-color: teal;
+    background-color: none;
+}
+#titOpciones{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+#img-Menu{
+    margin-top: 15%;
+    margin-left: 15px;
+    padding-left: 0;
+}
+#menuItems{
+    height: 150px;
+}
+
